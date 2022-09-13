@@ -9,12 +9,13 @@ defmodule NftexWeb.Router do
     pipe_through :api
 
     forward "/graphql", Absinthe.Plug, schema: NftexWeb.Schema
-
     forward "/graphiql", Absinthe.Plug.GraphiQL, schema: NftexWeb.Schema
   end
 
   scope "/api", NftexWeb do
     pipe_through :api
+
+    get "/arts", ArtsController, :index
   end
 
   # Enables LiveDashboard only for development
